@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>イベント一覧</title>
+    </head>
+    <body>
+        <h1>イベント一覧</h1>
+        <a href="{{ url_for('create_event') }}">新しいイベントを作成</a>
+        <ul>
+            {% for event in events %}
+            <li>
+                <a href="{{ url_for('event', event_id=event.id) }}"
+                    >{{ event.name }}</a
+                >
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

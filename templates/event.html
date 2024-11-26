@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ event.name }}</title>
+    </head>
+    <body>
+        <h1>イベント詳細</h1>
+        <p><strong>イベント名:</strong> {{ event.name }}</p>
+        <p><strong>イベントID:</strong> {{ event.id }}</p>
+
+        <h2>候補日</h2>
+        {% if event_dates %}
+        <form method="POST">
+            {% for date in event_dates %}
+            <div>
+                <label>{{ date.date }}</label>
+                <select name="date_{{ date.id }}">
+                    <option value="0">NG</option>
+                    <option value="1">OK</option>
+                </select>
+            </div>
+            {% endfor %}
+            <div>
+                <label>名前:</label><br />
+                <input type="text" name="name" required />
+            </div>
+            <button type="submit">送信</button>
+        </form>
+        {% else %}
+        <p>候補日はまだ設定されていません。</p>
+        {% endif %}
+
+        <hr />
+        <a href="{{ url_for('index') }}">トップページに戻る</a>
+    </body>
+</html>

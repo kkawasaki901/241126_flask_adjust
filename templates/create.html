@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ event.name }}</title>
+    </head>
+    <body>
+        <h1>{{ event.name }}</h1>
+        <h2>候補日</h2>
+        <form method="POST">
+            {% for date in event_dates %}
+            <label>{{ date.date }}</label>
+            <select name="date_{{ date.id }}">
+                <option value="0">NG</option>
+                <option value="1">OK</option>
+            </select>
+            <br />
+            {% endfor %}
+            <label>名前:</label><br />
+            <input type="text" name="name" required /><br />
+            <button type="submit">送信</button>
+        </form>
+    </body>
+</html>
